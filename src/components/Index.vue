@@ -28,114 +28,21 @@
       </v-row>
     </v-container>
     <Carousels></Carousels>
+    <div class="backgroundApp">
     <Experience 
       :titleEducation="titleEducation"
       :university="university"
       :titleExperience="titleExperience"
       />
-    <v-container>
-      <v-row class="mt-16" justify="center">        
-        <v-col cols="12" sm="7" md="6" lg="3" align-self="center">
-          <v-sheet
-            elevation="10"            
-            rounded="xl"
-          >
-        <v-sheet
-          class="primary text-center"
-          dark
-          rounded="t-xl"
-        >
-          <h2>Skills</h2>
-        </v-sheet>
-
-        <div class="pa-4">
-          <v-chip-group
-            active-class="primary--text"
-            column
-          >
-            <v-chip
-              v-for="(skill, i) in skills" :key="i"
-            >
-              {{ skill.text }} <v-icon class="ml-1">{{skill.icon}}</v-icon>
-            </v-chip>
-          </v-chip-group>
-        </div>
-          </v-sheet>
-        </v-col>
-        <v-col 
-          md="4"
-        >
-          <Skill/>
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-container fluid class="background-contact">
-      <v-row justify="space-around" class="pt-15 row-contact">
-        <v-col cols="12" sm="7" md="6" lg="5" align-self="center">
-          <div data-aos="zoom-in-up">
-                      <v-card color="" rounded="xl" class="text-center">
-            <v-card-text >
-              <h1>Contact</h1>
-            <v-form
-              
-              ref="form"
-              v-model="valid"
-              lazy-validation
-              class="pt-10 pl-8 pr-8"
-            >
-              <v-text-field
-                v-model="contact.name"
-                label="Name"
-                :rules="nameRules"
-                required
-              >
-              </v-text-field>
-              <v-text-field
-                v-model="contact.email"
-                label="Mail"
-                :rules="emailRules"
-                required
-              >
-              </v-text-field>
-              <v-textarea
-                v-model="contact.message"
-                required
-                :rules="messageRules"
-                label="Message"
-                auto-grow
-                rows="3"
-                row-height="25"
-                class="mt-5"
-                filled
-              />
-              <v-btn color="primary">
-                Enviar
-              </v-btn>
-              <p class="mt-10">ansa1315@outlook.es</p>
-            </v-form>
-            </v-card-text>
-          </v-card>
-          </div>
-        </v-col>
-        <v-col cols="8" sm="7" md="6" lg="5" align-self="center">
-          <Contact/>
-        </v-col>
-      </v-row>
-    </v-container>
-
-    <v-container>
-      <v-row>
-        <v-col cols="12" md="6" data-aos="fade-up">
-          <p>ansa1315@outlook.es</p>
-        </v-col>
-      </v-row>
-      <v-row class="text-center">
-        <v-col cols="12">
-          <h2>Others</h2>
-          <p>{{others}}</p>
-        </v-col>
-      </v-row>
-    </v-container>
+    <Skills
+      :skills="skills"
+    />
+    <Contact/>       
+    <footer>
+      Or if you prefer, send me an email to <a href="" class="hipervinculoEmail"><v-icon large>mdi-email-plus</v-icon> <b> ansa1315@outlook.es</b></a>
+    </footer>
+    <Others/>
+    </div>
   </div>
 </template>
 
@@ -145,11 +52,12 @@ import Experience from '../components/Experience.vue';
 import 'particles.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Skill from './Animation/Skill.vue';
-import Contact from './Animation/Contact.vue';
+import Contact from './Contact.vue';
+import Skills from './Skills.vue';
+import Others from './Others.vue';
 
 export default {
-  components: { Carousels, Experience, Skill, Contact },
+  components: { Carousels, Experience, Contact, Skills, Others },
 
   mounted(){
     this.english();
@@ -174,28 +82,8 @@ export default {
         {text: 'Autonomy and leadership', icon: 'mdi-account-heart'}
       ],
 
-      others: 'i love the animals and videogames :)',
-
-      //form
-      valid: false,
-      contact: {
-        name: '',
-        email: '',
-        message: ''
-      },
-
-      nameRules: [
-        v => !!v || 'Required'
-      ],
-
-      emailRules: [
-        v => !!v || 'Requerido',
-        v => /.+@.+/.test(v) || 'E-mail must be valid',
-      ],
-
-      messageRules:[
-        v => !!v || 'Required',
-      ]
+      others: 'I love the cats/dogs and video games :)',
+      nickname: 'My nickname: jonandres45 on all platforms, add me and have fun together!'
   }),
   methods:{
     english(){
@@ -368,16 +256,21 @@ export default {
 .my-system-card{
     background: #27496D;
 }
-
-.background-contact{
-  background: rgb(0, 0, 0);
-
+.backgroundApp{
+background-image: linear-gradient(to bottom, #000000, #15040c, #1e0819, #220e26, #201337, #1c163f, #131946, #001d4e, #001c4e, #001c4d, #001b4d, #001b4c);
 }
 
-.row-contact{
-  height: 100vh;
+footer{
+  background: #0c013a;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 3vh;
+  text-align: center;
 }
-
+.hipervinculoEmail{
+  text-decoration: none;
+  color: white;
+}
 @media screen and (max-width: 800px) {
   .texto{
     font-size: medium;

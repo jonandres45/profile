@@ -24,7 +24,12 @@
                     </v-card-actions>
                     </v-card>            
                 </v-col>
-                <v-col cols="12" sm="5" md="4" lg="6" class="text-center" align-self="center">
+                <v-col cols="12" sm="5" md="4" lg="6" v-if="item.video !== ''">
+                  <video muted autoPlay loop class="video-carousel">
+                    <source :src='item.video' type="video/mp4"/>
+                  </video>
+                </v-col>
+                <v-col cols="12" sm="5" md="4" lg="6" class="text-center" align-self="center" v-else>
                     <v-img :src="item.src" class="image-carousel mx-auto" width="100%"></v-img>
                     <h3>{{item.titleImage}}</h3>
                 </v-col>
@@ -50,6 +55,7 @@ export default {
                       `,
             link: 'https://app.caprienlinea.com',
             titleImage:'Caprie en línea',
+            video: 'static/videos/caprienlinea.mp4',
           },
           {
             src: 'static/login.png',
@@ -60,11 +66,11 @@ export default {
             <p>Visid the page, probably like their music :)</p>
             `,
             link: 'https://rangelesmusic.com',
-            titleImage:'Rangeles Music'
-
+            titleImage:'Rangeles Music',
+            video: 'static/videos/rangeles.mp4',
           },
           {
-            src: 'static/home.png',
+            src: 'static/ia.jpg',
             title:'Cognitive service IA (Azure)',
             content:`
             <p>Try some artificial intelligence, It is a website where you can upload the image you want</p>
@@ -72,17 +78,19 @@ export default {
             <p>Developed with VueJS and Azure Cognitive Services.</p>
             `,
             link: 'https://ia.andresjs.com',
-            titleImage:'Rangeles Music',
+            titleImage:'',
+            video: '',
           },
           {
-            src: 'static/calc.png',
+            src: 'static/papeleria.jpg',
             title:'Other webs',
             content:`
             <p>I love to design and create any type of pages</p>
             <p>This is a litle example, a stationery for notaries public <3</p>
             `,
             link: 'https://ia.andresjs.com',
-            titleImage:'Papeleria Jireh',
+            titleImage:'',
+            video: '',
           },
         ],
     }),
@@ -101,5 +109,9 @@ export default {
 }
 .image-carousel{
 
+}
+.video-carousel{
+  height: 100%;
+  width: 100%;
 }
 </style>
