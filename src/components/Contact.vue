@@ -1,17 +1,18 @@
 <template>
-    <v-container fluid class="background-contact">
+    <v-container fluid class="background-contact" id="contact">
       <v-row justify="space-around" class="pt-15 row-contact">
-        <v-col cols="12" sm="7" md="6" lg="5" align-self="center">
+        <v-col cols="12" class="text-center">
+          <h1>Contact</h1>
+        </v-col>
+        <v-col cols="12" sm="7" md="6" lg="5" align-self="center">          
           <div data-aos="zoom-in-up">
-            <v-card color="" rounded="xl" class="text-center">
-            <v-card-text >
-              <h1>Contact</h1>
-            <v-form
-              
+            <v-card color="" rounded="xl" class="text-center">              
+            <v-card-text >              
+            <v-form              
               ref="form"
               v-model="valid"
               lazy-validation
-              class="pt-10 pl-8 pr-8"
+              class="pt-10 pl-8 pr-8 pb-10"
             >
               <v-text-field
                 v-model="contact.name"
@@ -41,7 +42,6 @@
               <v-btn color="primary">
                 Enviar
               </v-btn>
-              <p class="mt-10">ansa1315@outlook.es</p>
             </v-form>
             </v-card-text>
           </v-card>

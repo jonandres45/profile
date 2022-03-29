@@ -21,6 +21,11 @@
                         <v-btn text>
                         visit now
                         </v-btn>
+                        <v-btn icon :href="item.refGithub">
+                          <v-icon>
+                            mdi-github
+                          </v-icon>
+                        </v-btn>
                     </v-card-actions>
                     </v-card>            
                 </v-col>
@@ -56,6 +61,7 @@ export default {
             link: 'https://app.caprienlinea.com',
             titleImage:'Caprie en línea',
             video: 'static/videos/caprienlinea.mp4',
+            refGithub: 'https://github.com/jonandres45'
           },
           {
             src: 'static/login.png',
@@ -68,6 +74,7 @@ export default {
             link: 'https://rangelesmusic.com',
             titleImage:'Rangeles Music',
             video: 'static/videos/rangeles.mp4',
+            refGithub:'https://github.com/jonandres45/rangelesmusic'
           },
           {
             src: 'static/ia.jpg',
@@ -80,6 +87,7 @@ export default {
             link: 'https://ia.andresjs.com',
             titleImage:'',
             video: '',
+            refGithub:'https://github.com/jonandres45/recognition_server'
           },
           {
             src: 'static/papeleria.jpg',
@@ -91,6 +99,7 @@ export default {
             link: 'https://ia.andresjs.com',
             titleImage:'',
             video: '',
+            refGithub:'https://github.com/jonandres45/papeleria'
           },
         ],
     }),

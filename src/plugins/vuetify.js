@@ -13,7 +13,7 @@ export default new Vuetify({
         themes: {
           dark: {
             system: "#27496D",
-            caca:"#151415"
+            caca:"#19274F"
           }
         }
       }
