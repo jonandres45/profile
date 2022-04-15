@@ -8,6 +8,13 @@
       <v-btn 
         class="mr-2" 
         outlined
+        @click="$vuetify.goTo('#proyects')"
+      >
+        Proyects
+      </v-btn>
+      <v-btn 
+        class="mr-2" 
+        outlined
         @click="$vuetify.goTo('#experience')"
       >
         Experience
@@ -44,6 +51,11 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@200&display=swap');
+*{
+font-family: 'Anek Gurmukhi', sans-serif;
+
+}
 body::-webkit-scrollbar {
     width: 10px;               /* width of the entire scrollbar */
 }

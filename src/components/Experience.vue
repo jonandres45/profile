@@ -4,15 +4,15 @@
           <v-col class="text-center" cols="12">
               <h1>{{titleEducation}}</h1>
               <h2>{{university}}</h2>
-              <h3>Ing. En sistemas computaciones / Computer systems engineer</h3>
+              <h3>Ing. En sistemas computacionales / Computer systems engineer</h3>
           </v-col>
           <v-col cols="6" md="3" lg="3" class="mt-5 mb-15 scrollflow -slide-right -opacity">
             <v-img
               src="static/pictures/sc.png"
               min-height = "200"
-              min-width = "200"
+              min-width = "180"
               max-height = "200"
-              max-width = "200"
+              max-width = "180"
               style="margin:0 auto"
               data-aos="fade-up"
             >
@@ -22,9 +22,9 @@
               <v-img
               src="static/pictures/ipn.png"
               min-height = "200"
-              min-width = "200"
+              min-width = "180"
               max-height = "200"
-              max-width = "200"
+              max-width = "150"
               style="margin:0 auto"
               data-aos="fade-up"
               >

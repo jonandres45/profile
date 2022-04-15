@@ -9,7 +9,7 @@
                     </v-col>
                     <v-col cols="12" class="text-center">
                         <v-icon large class="pr-5">mdi-sony-playstation</v-icon>
-                        <v-btn x-large href="https://discordapp.com/users/jonandres45#7172">
+                        <v-btn x-large href="https://discordapp.com/users/jonandres45#7172" outlined>
                             <v-icon
                                 large
                             >
@@ -23,7 +23,7 @@
         </div>
         <img src="/static/pictures/videogame.png" class='image-video' alt='imageNotvideo'/>
         <video muted autoPlay loop class='image-video'>
-            <source src="/static/videos/videogame.mp4" type="video/mp4"/>
+            <source src="/static/videos/reality.mp4" type="video/mp4"/>
         </video>
         <div class='capa'></div>
     </div>
@@ -50,14 +50,14 @@
 
 .promo h1{
     color: white;
-    font-size: 8vh;
+    font-size: 3em;
     font-family: 'NewYork';
     font-weight: 200;
     text-align: center;
     margin-bottom: 0px;
 }
 .promo h2{
-    font-size: 5vh;
+    font-size: 2em;
     font-family: 'NewYork';
     font-weight: 200;
     text-align: center;

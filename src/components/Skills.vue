@@ -21,6 +21,8 @@
           >
             <v-chip
               v-for="(skill, i) in skills" :key="i"
+              outlined
+              label
             >
               {{ skill.text }} <v-icon class="ml-1">{{skill.icon}}</v-icon>
             </v-chip>

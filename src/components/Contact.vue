@@ -6,7 +6,7 @@
         </v-col>
         <v-col cols="12" sm="7" md="6" lg="5" align-self="center">          
           <div data-aos="zoom-in-up">
-            <v-card color="" rounded="xl" class="text-center">              
+            <v-card color="capri" rounded="xl" class="text-center">              
             <v-card-text >              
             <v-form              
               ref="form"
@@ -39,9 +39,19 @@
                 class="mt-5"
                 filled
               />
-              <v-btn color="primary">
-                Enviar
+              <v-btn 
+                color="primary"
+                @click="sendMessage"
+                :loading="loading"
+                >
+                Send
               </v-btn>
+              <v-alert
+                v-if="sendCorrect"
+                type="success"
+                dense
+                class="mt-5"
+              >Submitted successfully</v-alert>
             </v-form>
             </v-card-text>
           </v-card>
@@ -55,6 +65,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import ContactAnimation from './Animation/Contact.vue';
 
 export default {
@@ -62,6 +73,8 @@ export default {
     components:{ContactAnimation},
     data:()=>({
         //form
+      loading: false,
+      sendCorrect: false,
       valid: false,
       contact: {
         name: '',
@@ -82,6 +95,17 @@ export default {
         v => !!v || 'Required',
       ]
     }),
+    methods:{
+      async sendMessage(){
+        this.loading = true;        
+        await axios.post("https://andresjs.com/mensaje.php", JSON.stringify(this.contact));
+        this.loading = false;
+        this.sendCorrect = true;
+/*        if(this.$refs.form.validate()){
+
+        }*/
+      }
+    }
 }
 </script>
 

@@ -1,9 +1,10 @@
 <template>
-  <v-carousel height="700">
+<div class="carouselContainer" id="proyects">
+  <v-carousel height="100vh">
     <v-carousel-item
       v-for="(item,i) in items"
       :key="i"
-      :src="item.src"
+      :class="item.color"
     >
         <v-container
             class="my-system"
@@ -11,7 +12,7 @@
         >
             <v-row justify="center" style="height:100%">
                 <v-col cols="12" sm="7" md="5" lg="5" align-self="center">
-                    <v-card class="my-system-card" elevation="0">
+                    <v-card color="transparent" elevation="0">
                     <v-card-title>
                         {{item.title}}
                     </v-card-title>
@@ -42,21 +43,81 @@
         </v-container>
     </v-carousel-item>
   </v-carousel>
+</div>
 </template>
 
 <script>
 
 export default {
-    
+    props:['toggleLanguage'],
     data: ()=>({
-        items: [
+        items:[],
+        itemsEnglish: [
           {
             src: 'static/login.png',
             title: 'My first program',
             content: `
                       <p>Developed in collaboration with informatica y distribuidora capricornio S.A. de C.V. and my friend developer Christopher</p>
-                      <p>Using laravel as backend and vuejs as frontend.</p>
+                      <p>Using laravel as backend and VueJS as frontend.</p>
                       <p>Calculate the I.S.R. In the sale of a property, it is developed especially for the notary public all across Mexico.</p>
+                      `,
+            link: 'https://app.caprienlinea.com',
+            titleImage:'Caprie en línea',
+            video: 'static/videos/caprienlinea.mp4',
+            refGithub: 'https://github.com/jonandres45',
+            color:'capriColor'
+          },
+          {
+            src: 'static/login.png',
+            title:'Rangeles music',
+            content:`
+                    <p>Web designed and developed for Dj / Music Producer & Creative Ricardo Angeles</p>
+                    <p>Using React JS in the FrondEnd</p>
+                    <p>You should visit the page, you probably like his music :)</p>
+            `,
+            link: 'https://rangelesmusic.com',
+            titleImage:'Rangeles Music',
+            video: 'static/videos/rangeles.mp4',
+            refGithub:'https://github.com/jonandres45/rangelesmusic',
+            color:'richiColor',
+          },
+          {
+            src: 'static/ia.jpg',
+            title:'Cognitive service AI (Azure)',
+            content:`
+                    <p>Try some artificial intelligence, It is a website where you can upload the image you want</p>
+                    <p>The AI answers you with what's in your image (Magic !)</p>
+                    <p>Developed with VueJS and Azure Cognitive Services.</p>
+            `,
+            link: 'https://ia.andresjs.com',
+            titleImage:'',
+            video: '',
+            refGithub:'https://github.com/jonandres45/recognition_server',
+            color:'AIColor',
+          },
+          {
+            src: 'static/papeleria.jpg',
+            title:'Other webs',
+            content:`
+                    <p>I love to design and create any type of pages</p>
+                    <p>This is a little example, a stationery for public notaries <3</p>
+            `,
+            link: 'https://ia.andresjs.com',
+            titleImage:'',
+            video: '',
+            refGithub:'https://github.com/jonandres45/papeleria',
+            color:"papeleriaColor",
+            
+          },
+        ],
+        itemsSpanish:[
+          {
+            src: 'static/login.png',
+            title: 'Mi primer programa',
+            content: `                      
+                      <p>Desarrollado en colaboracion con informatica y distribuidora capricornio S.A. de C.V. y mi amigo Christopher</p>
+                      <p>Usando Laravel como BackEnd y VueJS como FrondEnd</p>
+                      <p>Calcula el I.S.R. por enajenación y adquisición de bienes inmuebles, desarrollado especificamente para notarías públicas en todo México</p>
                       `,
             link: 'https://app.caprienlinea.com',
             titleImage:'Caprie en línea',
@@ -67,9 +128,9 @@ export default {
             src: 'static/login.png',
             title:'Rangeles music',
             content:`
-            <p>Web designed and developed for Dj / Music Producer & Creative Ricardo angeles</p>
-            <p>Using React JS in the FrondEnd</p>
-            <p>Visid the page, probably like their music :)</p>
+                    <p>Página web diseñado y desarrollada para Dj / Music Producer & Creative Ricardo Angeles</p>
+                    <p>Usando React JS como FrondEnd</p>
+                    <p>Visita el sitio, probablemente te guste su música, es muy bueno ! :)</p>
             `,
             link: 'https://rangelesmusic.com',
             titleImage:'Rangeles Music',
@@ -80,9 +141,9 @@ export default {
             src: 'static/ia.jpg',
             title:'Cognitive service IA (Azure)',
             content:`
-            <p>Try some artificial intelligence, It is a website where you can upload the image you want</p>
-            <p>The IA answer you with whats is in your image (Magic !)</p>
-            <p>Developed with VueJS and Azure Cognitive Services.</p>
+                    <p>Prueba algo de intelgiencia artificial, puedes subir la imagen que desees</p>
+                    <p>La IA te respondera con lo que hay en la imagen (¡Magico!)</p>
+                    <p>Desarrollado con VueJS y Azure Cognitive Services.</p>
             `,
             link: 'https://ia.andresjs.com',
             titleImage:'',
@@ -91,31 +152,68 @@ export default {
           },
           {
             src: 'static/papeleria.jpg',
-            title:'Other webs',
+            title:'¡ y más páginas !',
             content:`
-            <p>I love to design and create any type of pages</p>
-            <p>This is a litle example, a stationery for notaries public <3</p>
+                    <p>Me encanta desarrollar y crear todo tipo de páginas web</p>
+                    <p>Este es un pequeño ejemplo más, una papelería pára el notariado público</p>
             `,
             link: 'https://ia.andresjs.com',
             titleImage:'',
             video: '',
             refGithub:'https://github.com/jonandres45/papeleria'
           },
-        ],
+        ]
     }),
+
+    mounted(){
+      this.english();
+    },
+
+    methods:{
+      english(){
+        this.items = this.itemsEnglish;        
+      },
+      spanish(){
+        this.items = this.itemsSpanish;
+      }
+    },
+    watch:{
+      toggleLanguage(){
+        if(this.toggleLanguage){
+          this.spanish();
+        }else{
+          this.english();
+        }
+      }
+    }
 
 }
 </script>
 
 <style scoped>
+.titleProyects{
+  background: #000000;
+}
+.carouselContainer{
+  height: 100vh;
+}
+.capriColor{
+  background: #1c3856;
+}
+.richiColor{
+  background:#111111
+}
+.AIColor{
+  background:#190329
+}
+.papeleriaColor{
+  background:#241d00
+}
 .my-system{
-  background: #27496D;
   height: 100%;
 }
 
-.my-system-card{
-    background: #27496D;
-}
+
 .image-carousel{
 
 }

@@ -13,7 +13,11 @@ export default new Vuetify({
         themes: {
           dark: {
             system: "#27496D",
-            caca:"#19274F"
+            caca:"#19274F",
+            capri: "#1c3856",
+            richi: "#111111",
+            AI: "#190329",
+            papeleria: "#241d00"
           }
         }
       }
