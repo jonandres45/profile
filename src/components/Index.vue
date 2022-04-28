@@ -5,7 +5,7 @@
       <v-row class="presentacion" justify="center">
         <v-col cols="12" md="5" align-self="center" style="" class="texto pa-5">
                 <h1>{{profile}}</h1>
-                <h4>{{profileDescription}}</h4>
+                <h4>{{profileDescription}}</h4>                
                 <p>
                   <v-switch
                     v-model="toggleLanguage"
@@ -40,9 +40,10 @@
                   >
                     Contact
                   </v-btn>
-        </v-col>
+        </v-col>        
         <v-col cols="12" md="5" class="text-center" align-self="center">
-          <Presentation/>
+          <v-img src="static/LOGOS/logoAndres.png" class="logopng"></v-img>
+          <Presentation/>          
         </v-col>        
       </v-row>
     </v-container>
