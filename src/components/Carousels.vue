@@ -31,8 +31,13 @@
                     </v-card>            
                 </v-col>
                 <v-col cols="12" sm="5" md="4" lg="6" v-if="item.video !== ''">
-                  <video muted autoPlay loop class="video-carousel">
+                  <video muted autoPlay loop controls class="video-carousel" v-if="browser === 'Safari'">
                     <source :src='item.video' type="video/mp4"/>
+                    Video no soportado
+                  </video>
+                  <video muted autoPlay loop class="video-carousel" v-else>
+                    <source :src='item.video' type="video/mp4"/>
+                    Video no soportado
                   </video>
                 </v-col>
                 <v-col cols="12" sm="5" md="4" lg="6" class="text-center" align-self="center" v-else>
@@ -52,7 +57,8 @@ export default {
     props:['toggleLanguage'],
     data: ()=>({
         items:[],
-        itemsEnglish: [
+        browser: '',
+        itemsEnglish: [          
           {
             src: 'static/login.png',
             title: 'My first program',
@@ -122,7 +128,8 @@ export default {
             link: 'https://app.caprienlinea.com',
             titleImage:'Caprie en línea',
             video: 'static/videos/caprienlinea.mp4',
-            refGithub: 'https://github.com/jonandres45'
+            refGithub: 'https://github.com/jonandres45',
+            color:'capriColor'
           },
           {
             src: 'static/login.png',
@@ -135,7 +142,8 @@ export default {
             link: 'https://rangelesmusic.com',
             titleImage:'Rangeles Music',
             video: 'static/videos/rangeles.mp4',
-            refGithub:'https://github.com/jonandres45/rangelesmusic'
+            refGithub:'https://github.com/jonandres45/rangelesmusic',
+            color:'richiColor',
           },
           {
             src: 'static/ia.jpg',
@@ -148,7 +156,8 @@ export default {
             link: 'https://ia.andresjs.com',
             titleImage:'',
             video: '',
-            refGithub:'https://github.com/jonandres45/recognition_server'
+            refGithub:'https://github.com/jonandres45/recognition_server',
+            color:'AIColor',
           },
           {
             src: 'static/papeleria.jpg',
@@ -160,13 +169,16 @@ export default {
             link: 'https://ia.andresjs.com',
             titleImage:'',
             video: '',
-            refGithub:'https://github.com/jonandres45/papeleria'
+            refGithub:'https://github.com/jonandres45/papeleria',
+            color:"papeleriaColor",
           },
         ]
     }),
 
     mounted(){
       this.english();
+      const browser = this.getBrowserInfo();
+      this.browser = browser.substr(0, 6);
     },
 
     methods:{
@@ -175,6 +187,21 @@ export default {
       },
       spanish(){
         this.items = this.itemsSpanish;
+      },
+      getBrowserInfo(){
+        var ua= navigator.userAgent, tem, 
+        M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];        
+        if(/trident/i.test(M[1])){
+            tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return 'IE '+(tem[1] || '');
+        }
+        if(M[1]=== 'Chrome'){
+            tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+            if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+        }
+        M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+        if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+        return M.join(' ');
       }
     },
     watch:{

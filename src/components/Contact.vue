@@ -39,19 +39,20 @@
                 class="mt-5"
                 filled
               />
-              <v-btn 
-                color="primary"
-                @click="sendMessage"
-                :loading="loading"
-                >
-                Send
-              </v-btn>
               <v-alert
                 v-if="sendCorrect"
                 type="success"
                 dense
                 class="mt-5"
               >Submitted successfully</v-alert>
+              <v-btn 
+                color="primary"
+                v-else
+                @click="sendMessage"
+                :loading="loading"
+                >
+                Send
+              </v-btn>
             </v-form>
             </v-card-text>
           </v-card>
@@ -96,14 +97,13 @@ export default {
       ]
     }),
     methods:{
-      async sendMessage(){
-        this.loading = true;        
-        await axios.post("https://andresjs.com/mensaje.php", JSON.stringify(this.contact));
-        this.loading = false;
-        this.sendCorrect = true;
-/*        if(this.$refs.form.validate()){
-
-        }*/
+      async sendMessage(){        
+        if(this.$refs.form.validate()){
+          this.loading = true;        
+          await axios.post("https://andresjs.com/mensaje.php", JSON.stringify(this.contact));
+          this.loading = false;
+          this.sendCorrect = true;
+        }
       }
     }
 }

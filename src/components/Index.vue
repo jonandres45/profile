@@ -16,6 +16,30 @@
                     hide-details
                   ></v-switch>
                 </p>
+                  <v-btn 
+                    class="mr-2 d-md-none" 
+                    color="indigo"
+                    small
+                    @click="$vuetify.goTo('#proyects')"
+                  >
+                    Proyects
+                  </v-btn>
+                  <v-btn 
+                    class="mr-2 d-md-none" 
+                    color="indigo"
+                    small
+                    @click="$vuetify.goTo('#experience')"
+                  >
+                    Experience
+                  </v-btn>
+                  <v-btn 
+                    class="mr-2 d-md-none" 
+                    color="indigo"
+                    small
+                    @click="$vuetify.goTo('#contact')"
+                  >
+                    Contact
+                  </v-btn>
         </v-col>
         <v-col cols="12" md="5" class="text-center" align-self="center">
           <Presentation/>
@@ -78,14 +102,16 @@ export default {
       titleSkills: '',
       skills:[],
       skillsEnglish: [
-        {text: 'Passion for teaching, i like to learn and also teach what i know', icon: 'mdi-card-account-details-outline'},
+        {text: 'Passion for teaching', icon: 'mdi-card-account-details-outline'},
+        {text: 'I like to learn and also teach what i know', icon: 'mdi-school'},
         {text: 'I adapt easily to technologies', icon:'mdi-cellphone-check'},
         {text: 'Empathy and initiatives to hangout with the team', icon: 'mdi-account-multiple-check'},
         {text: 'Autonomy and leadership', icon: 'mdi-account-heart'}
       ],
 
       skillsSpanish:[
-        {text: 'Pasi+on por enseñar, me gusta aprender y compartir conocimientos', icon: 'mdi-card-account-details-outline'},
+        {text: 'Pasión por la enseñanza', icon: 'mdi-card-account-details-outline'},
+        {text: 'Me gusta aprender y compartir conocimientos', icon: 'mdi-school'},
         {text: 'Me adapto fácil a las tecnologías', icon:'mdi-cellphone-check'},
         {text: 'Empatia e iniciativas para trabajar en equipo', icon: 'mdi-account-multiple-check'},
         {text: 'Autonomía y liderazgo', icon: 'mdi-account-heart'}
@@ -133,9 +159,9 @@ export default {
     spanish(){
         this.profile = "Andrés Ortiz - Sobre mi";        
         this.profileDescription = `
-        Hola ! bienvenido a mi portafolio, soy de México ! Estado de México. Tengo experiencia desarrollando aplicaciones por 3 años
-        Inicie dando manteminento a un programa para el ISR en Visual Basic 6.0 para las notarías públicas alrededor de México. Despupes
-        desarrolle mi propia aplicación web para el mismo cálculo de ISR con varias mejoras y actualizaciones.
+        Hola ! bienvenido a mi portafolio, soy un desarrollador 'full stack', especializado en el lado frond-end, resido en la Ciudad de México. Tengo experiencia desarrollando aplicaciones por más de 3 años,
+        Inicie dando manteminento a un programa para el I.S.R. en Visual Basic 6.0 para las notarías públicas alrededor de México.
+        Desarrolle mi propia aplicación web para el mismo cálculo de I.S.R. con varias mejoras y actualizaciones.
         `
         this.websiteCompany = `Company website developed by me:`;
 
