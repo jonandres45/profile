@@ -14,12 +14,17 @@
                 <v-col cols="12" sm="7" md="5" lg="5" align-self="center">
                     <v-card color="transparent" elevation="0">
                     <v-card-title>
-                        {{item.title}}
+                        <h2>{{item.title}}</h2>
+                        <v-btn icon v-for="(ico) in item.technology" :key="ico">
+                          <v-icon>
+                            mdi-{{ico}}
+                          </v-icon>
+                        </v-btn>
                     </v-card-title>
                     <v-card-text class="text-lg-h6 text-sm-body-2" v-html="item.content">
                     </v-card-text>
                     <v-card-actions v-if="item.link !== ''">
-                        <v-btn text>
+                        <v-btn text :href="item.link">
                         visit now
                         </v-btn>
                         <v-btn icon :href="item.refGithub">
@@ -71,7 +76,8 @@ export default {
             titleImage:'Caprie en línea',
             video: 'static/videos/caprienlinea.mp4',
             refGithub: 'https://github.com/jonandres45',
-            color:'capriColor'
+            color:'capriColor',
+            technology:['laravel', 'vuejs'],
           },
           {
             src: 'static/login.png',
@@ -86,6 +92,7 @@ export default {
             video: 'static/videos/rangeles.mp4',
             refGithub:'https://github.com/jonandres45/rangelesmusic',
             color:'richiColor',
+            technology:['react'],
           },
           {
             src: 'static/ia.jpg',
@@ -100,6 +107,35 @@ export default {
             video: '',
             refGithub:'https://github.com/jonandres45/recognition_server',
             color:'AIColor',
+            technology:['vuejs', 'nodejs'],
+          },
+          {
+            src: 'static/mercado.jpg',
+            title:'Mercado libre API',
+            content:`
+                    <p>Using an API from "mercado libre" with <strong>Node</strong> as backend and <strong>React/Redux/Axios</strong> as Front-end</p>                    
+                    <p>Search for the product you want :)</p>
+            `,
+            link: 'https://mercado.andresjs.com/',
+            titleImage:'',
+            video: '',
+            refGithub:'https://github.com/jonandres45/mercadoLibreApi',
+            color:"mercadoLibreColor",
+            technology:['react', 'nodejs'],            
+          },
+          {
+            src: 'static/covid.jpg',
+            title:'Covid API',
+            content:`
+                    <p>using a covid-19 API to graph sick, vaccinated and more</p>
+                    <p>This is a challenge, since it was made without any CSS framework.</p>
+            `,
+            link: 'http://covidapi.andresjs.com/',
+            titleImage:'',
+            video: '',
+            refGithub:'https://github.com/jonandres45/prueba-covid',
+            color:"covidColor",
+            technology:['react'],
           },
           {
             src: 'static/papeleria.jpg',
@@ -108,12 +144,12 @@ export default {
                     <p>I love to design and create any type of pages</p>
                     <p>This is a little example, a stationery for public notaries <3</p>
             `,
-            link: 'https://ia.andresjs.com',
+            link: 'https://papeleriajireh.com/',
             titleImage:'',
             video: '',
             refGithub:'https://github.com/jonandres45/papeleria',
             color:"papeleriaColor",
-            
+            technology:['react'],
           },
         ],
         itemsSpanish:[
@@ -129,7 +165,8 @@ export default {
             titleImage:'Caprie en línea',
             video: 'static/videos/caprienlinea.mp4',
             refGithub: 'https://github.com/jonandres45',
-            color:'capriColor'
+            color:'capriColor',
+            technology:['laravel', 'vuejs'],
           },
           {
             src: 'static/login.png',
@@ -144,6 +181,7 @@ export default {
             video: 'static/videos/rangeles.mp4',
             refGithub:'https://github.com/jonandres45/rangelesmusic',
             color:'richiColor',
+            technology:['react'],
           },
           {
             src: 'static/ia.jpg',
@@ -158,6 +196,35 @@ export default {
             video: '',
             refGithub:'https://github.com/jonandres45/recognition_server',
             color:'AIColor',
+            technology:['vuejs', 'nodejs'],
+          },
+          {
+            src: 'static/mercado.jpg',
+            title:'Mercado libre API',
+            content:`
+              <p>Usando el API de "Mercado libre" con <strong>Node</strong> como back-end y <strong>React/Redux/Axios</strong> como front-end</p>
+              <p>Busca el producto que quieras :)</p>
+            `,
+            link: 'https://mercado.andresjs.com/',
+            titleImage:'',
+            video: '',
+            refGithub:'https://github.com/jonandres45/mercadoLibreApi',
+            color:"mercadoLibreColor",
+            technology:['react', 'nodejs'],
+          },
+          {
+            src: 'static/covid.jpg',
+            title:'Covid API',
+            content:`
+                    <p>usando un API de covid-19 para graficar enfermos, vacunados y más</p>
+                    <p>Esto es un reto, ya que fue hecha sin ningún framework de CSS.</p>
+            `,
+            link: 'http://covidapi.andresjs.com/',
+            titleImage:'',
+            video: '',
+            refGithub:'https://github.com/jonandres45/prueba-covid',
+            color:"covidColor",
+            technology:['react'],
           },
           {
             src: 'static/papeleria.jpg',
@@ -171,6 +238,7 @@ export default {
             video: '',
             refGithub:'https://github.com/jonandres45/papeleria',
             color:"papeleriaColor",
+            technology:['react'],
           },
         ]
     }),
@@ -233,8 +301,14 @@ export default {
 .AIColor{
   background:#190329
 }
+.mercadoLibreColor{
+  background:#0b051e
+}
 .papeleriaColor{
   background:#241d00
+}
+.covidColor{
+  background:#041212
 }
 .my-system{
   height: 100%;

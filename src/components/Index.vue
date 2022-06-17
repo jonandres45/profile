@@ -188,7 +188,7 @@ export default {
       window.particlesJS('particles-js', {
         "particles": {
           "number": {
-            "value": 90,
+            "value": 40,
             "density": {
               "enable": false,
               "value_area": 800
